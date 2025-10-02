@@ -26,12 +26,7 @@ Thumbs.db
 
 # Git & version control
 .git
-.gitignore
 .gitattributes
-
-# Docker files (optional if you don’t want to send them in build context)
-.dockerignore
-Dockerfile*
 
 # IDE/editor settings
 .vscode
