@@ -1,0 +1,12 @@
+version: "1.0"
+
+services:
+  frontend:
+    image: narainad308/pixamart-frontend:latest
+    container_name: pixamart-frontend
+    ports:
+      - "3000:3000"  
+    env_file:
+      - .env  
+    restart: always
+    pull_policy: always  

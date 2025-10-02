@@ -1,0 +1,55 @@
+name: Deploy Pixamart-frontend App to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v2
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      run: |
+        IMAGE_TAG=${GITHUB_SHA::7}  # first 7 characters of commit SHA
+        echo "Building image with tag $IMAGE_TAG"
+        
+        # Build and push unique SHA tag
+        docker build -t narainad308/pixamart-frontend:$IMAGE_TAG .
+        docker push narainad308/pixamart-frontend:$IMAGE_TAG
+
+        # Tag as latest and push
+        docker tag narainad308/pixamart-frontend:$IMAGE_TAG narainad308/pixamart-frontend:latest
+        docker push narainad308/pixamart-frontend:latest
+
+    - name: Connect and deploy to EC2
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        port: 22
+        script: |
+          cd /home/ubuntu/pixamart-frontend
+
+          # Pull the latest Docker image using Docker Compose
+          sudo docker-compose pull
+
+          # Start/recreate the container
+          sudo docker-compose up -d --force-recreate
+
+          # Remove unused images to free space
+          sudo docker image prune -af

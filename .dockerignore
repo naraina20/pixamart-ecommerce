@@ -1,0 +1,39 @@
+# Node modules and dependencies (installed inside container anyway)
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Build and cache
+dist
+build
+.cache
+.next
+out
+coverage
+tmp
+*.log
+
+# Environment files (keep secrets safe)
+.env
+.env.local
+.env.*.local
+
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Git & version control
+.git
+.gitignore
+.gitattributes
+
+# Docker files (optional if you don’t want to send them in build context)
+.dockerignore
+Dockerfile*
+
+# IDE/editor settings
+.vscode
+.idea
+*.iml
