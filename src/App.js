@@ -57,7 +57,7 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/stripeapikey`);
+    const { data } = await axios.get(`https://ecommerce-site-08nk.onrender.com/api/v1/stripeapikey`);
 
     setStripeApiKey(data.stripeApiKey);
   }

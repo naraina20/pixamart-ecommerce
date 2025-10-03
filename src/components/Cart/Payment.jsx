@@ -54,7 +54,7 @@ const Payment = ({ history }) => {
       };
 
       const { data } = await axios.post(
-        `${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/payment/process`,
+        `https://ecommerce-site-08nk.onrender.com/api/v1/payment/process`,
         paymentData,
         config
       );

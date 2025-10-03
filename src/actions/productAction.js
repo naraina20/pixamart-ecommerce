@@ -47,7 +47,7 @@ export const createProduct = (productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" }, withCredentials: true
     };
 
-    const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/admin/product/new`, productData, config)
+    const { data } = await axios.post(`https://ecommerce-site-08nk.onrender.com/api/v1/admin/product/new`, productData, config)
 
     dispatch({
       type: NEW_PRODUCT_SUCCESS,
@@ -66,7 +66,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/admin/product/${id}`, {withCredentials: true})
+    const { data } = await axios.delete(`https://ecommerce-site-08nk.onrender.com/api/v1/admin/product/${id}`, {withCredentials: true})
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -89,7 +89,7 @@ export const updateProduct = (id,productData ) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },withCredentials: true
     };
 
-    const { data } = await axios.put(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/admin/product/${id}`, productData, config)
+    const { data } = await axios.put(`https://ecommerce-site-08nk.onrender.com/api/v1/admin/product/${id}`, productData, config)
 
     dispatch({
       type: UPDATE_PRODUCT_SUCCESS,
@@ -110,10 +110,10 @@ export const getProducts =
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
 
-      let link = `${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      let link = `https://ecommerce-site-08nk.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
       if (category) {
-        link = `${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+        link = `https://ecommerce-site-08nk.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
       }
 
       const { data } = await axios.get(link);
@@ -136,7 +136,7 @@ export const getAdminProducts = (id) => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST })
     
-    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/admin/products`, {withCredentials: true})
+    const { data } = await axios.get(`https://ecommerce-site-08nk.onrender.com/api/v1/admin/products`, {withCredentials: true})
     
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -155,7 +155,7 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/product/${id}`);
+    const { data } = await axios.get(`https://ecommerce-site-08nk.onrender.com/api/v1/product/${id}`);
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -174,7 +174,7 @@ export const getSameCatProducts = (id) => async (dispatch) => {
   try {
     dispatch({ type: SAME_CATEGORY_PRODUCTS_REQUEST });
 
-    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/products/${id}`,{withCredentials: true});
+    const { data } = await axios.get(`https://ecommerce-site-08nk.onrender.com/api/v1/products/${id}`,{withCredentials: true});
 
     dispatch({
       type: SAME_CATEGORY_PRODUCTS_SUCCESS,
@@ -200,7 +200,7 @@ export const newReview = (reviewData) => async (dispatch) => {
       },withCredentials: true
     };
 
-    const { data } = await axios.put(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/review`, reviewData, config);
+    const { data } = await axios.put(`https://ecommerce-site-08nk.onrender.com/api/v1/review`, reviewData, config);
 
     dispatch({
       type: CREATE_REVIEW_SUCCESS,
@@ -219,7 +219,7 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEWS_REQUEST });
 
-    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/reviews?id=${id} `);
+    const { data } = await axios.get(`https://ecommerce-site-08nk.onrender.com/api/v1/reviews?id=${id} `);
 
     dispatch({
       type: ALL_REVIEWS_SUCCESS,
@@ -238,7 +238,7 @@ export const deleteReview = (reviewId, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
-    const { data } = await axios.delete(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/reviews?id=${reviewId}&productId=${productId}`, {withCredentials: true});
+    const { data } = await axios.delete(`https://ecommerce-site-08nk.onrender.com/api/v1/reviews?id=${reviewId}&productId=${productId}`, {withCredentials: true});
 
     dispatch({
       type: DELETE_REVIEW_SUCCESS,

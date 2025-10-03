@@ -14,7 +14,7 @@ export const getAllCategories = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_CATEGORIES_REQUEST });
 
-    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/categories`);
+    const { data } = await axios.get(`https://ecommerce-site-08nk.onrender.com/api/v1/categories`);
     dispatch({
       type: ALL_CATEGORIES_SUCCESS,
       payload: data.categoryList,
@@ -37,7 +37,7 @@ export const createCategory = (mydata) => async (dispatch) => {
 
     console.log(mydata);
 
-    const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/v1/category/new`, mydata, config);
+    const { data } = await axios.post(`https://ecommerce-site-08nk.onrender.com/api/v1/category/new`, mydata, config);
 
     console.log(data);
     dispatch({
