@@ -42,7 +42,7 @@ const ProcessOrder = ({ history, match }) => {
     }
 
     if (isUpdated) {
-      toast.sucess("Order updated successfully");
+      toast.success("Order updated successfully");
       history.push("/admin/orders");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
