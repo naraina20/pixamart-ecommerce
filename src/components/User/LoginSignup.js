@@ -92,18 +92,14 @@ const LoginSignup = ({ history, location }) => {
   const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {
-    if (isAuthenticated) {
-      history.push(redirect);
-    }
-  }, [dispatch, history, isAuthenticated, redirect]);
-
-  useEffect(()=>{
-    console.log("error useffect",error)
     if (error) {
       toast.error(error || "Something went wrong!")
       dispatch(clearErrors());
     }
-  }, [error])
+    if (isAuthenticated) {
+      history.push(redirect);
+    }
+  }, [dispatch,error, history, isAuthenticated, redirect]);
 
   return (
     <Fragment>

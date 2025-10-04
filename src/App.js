@@ -10,7 +10,6 @@ import webFont from "webfontloader";
 import store from "./store";
 import ScrollToTop from "./ScrollToTop";
 import Loader from "./components/layout/Loader/Loader.jsx";
-import { toast, ToastContainer } from 'react-toastify';
 
 
 
